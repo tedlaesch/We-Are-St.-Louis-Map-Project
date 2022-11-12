@@ -11286,3 +11286,16 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* custom css */
+
+.map-button{
+  z-index: 9999;
+  position: absolute;
+  width: 100%;
+  top:134px;
+  padding:0 13px;
+}
+.button-position{
+  display: flex;
+  justify-content: space-between;
+}
