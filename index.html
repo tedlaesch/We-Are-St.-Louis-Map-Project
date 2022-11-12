@@ -44,6 +44,7 @@
         </div>
       </div>
       <div>
+        
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight">Map Details</button>
 
@@ -53,6 +54,35 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
+            <form name = "inputForm" id = "inputForm"  action = " " method = GET>
+
+              <div class="input-group">
+                  <label for = "userText"> Text: </label>
+                  <input id = "userText" type = "text" name= "userText" onKeyup = "validateText()"
+                         maxlength = "280" rows = "5" placeholder = "Add Text Here" required />
+                  <span id = "text-error"> <!-- Enter text to display map --> </span>
+                  <!-- <span class ="error_form" id = "userText_error_message"> </span> -->
+                  <!-- <div class="input-group">
+                      <label> Text: </label>
+                      <textarea rows = "3" maxlength = "280" placeholder = "Add Text Here"></textarea> -->
+                  <br/>
+              </div>
+          
+              <div class = "input-group">
+                  <label for = "userImage"> Image: </label>
+                  <input id = "userImage" type = "file" name = "userImage" />
+                  <span id = "image-error"> <!--Upload a picture to display map--> </span>
+                  <!-- <span class ="error_form" id = "userImage_error_message"> </span> -->
+                  <hr/>
+                  <br/>
+              </div>
+              <br/>
+          
+          
+              <input type = "submit" value = "Submit" />
+              <input type = "reset" value ="Reset" />
+          
+          </form>
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Information</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
