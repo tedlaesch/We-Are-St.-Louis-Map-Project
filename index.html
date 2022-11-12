@@ -8,7 +8,7 @@
   <meta name="author" content="" />
   <title>Map</title>
   <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="assets/tabicon.png" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/styles.css" rel="stylesheet" />
 </head>
@@ -19,6 +19,9 @@
     src="https://umstlouis.maps.arcgis.com/apps/instant/basic/index.html?appid=d89a4efd3f504d4faa5051e7259ecd15"
     width="100%" height="100%" style="position:absolute;outline:none;" allowfullscreen>iFrames are not supported on this
     page.</iframe>
+  <div class="logo"> <!--Logo: centered to the top of the page, uses fluid container to dynamically resize in accordance to the window size-->
+      <img src="assets/logonospace.png" class="img-fluid" alt="We are STL logo" style="display: block; margin-left: auto; margin-right: auto; width: 25%; position:relative;">
+  </div>
   <div class="map-button">
     <div class="button-position">
       <div>
@@ -35,29 +38,63 @@
           </div>
           <div class="offcanvas-body">
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim ut sem viverr aliquet. Amet est placerat in egestas erat imperdiet. Hac habitasse platea dictumst quisque sagittis purus sit amet. Id cursus metus aliquam eleifend mi in nulla. Nulla posuere sollicitudin aliquam ultrices sagittis orci. Eu non diam phasellus vestibulum lorem sed. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis.Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin.Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. <br /><br />Est ullamcorper eget nulla facilisi. Metus
-              vulputate eu scelerisque felis imperdiet proin fermentum leo. Sit amet purus gravida quis blandit turpis cursus in hac. Iaculis nunc sed augue lacus viverra vitae congue eu consequat. Proin sagittis nisl rhoncus mattis rhoncus urna. Donec massa sapien faucibus et. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Potenti nullam ac tortor vitae purus faucibus. <br /><br />Rutrum quisque non tellus orci. Arcu risus
-              quis varius quam. Pellentesque massa placerat duis ultricies. Fermentum odio eu feugiat pretium nibh. Tortor consequat id porta nibh venenatis cras sed felis eget. Sed arcu non odio euismod lacinia at. Quis lectus nulla at volutpat. Quis commodo odio aenean sed adipiscing diam donec adipiscing. 
+              <p>
+              <i>We Are St. Louis</i> is an online public history and storytelling project designed by a team of dedicated scholar-activists at the University of Missouri-St. Louis.  <br />
+              <br /><i>We Are St. Louis</i> first aims to serve as a publicly accessible, curated living digital collection that illuminates the network of oppressive systems in the region, while also lifting up the social change, creation, and joy that has long been undertaken by St. Louisans. The city of St. Louis and the broader region has a complex history of violence and oppression, but also a rich history of activism and resistance, from the Dred Scott decision to the Ferguson Uprising.<br />
+              <br />While there are other archives, historical sites, and scholarly projects that represent some of St. Louis’ past, present, and future, there is no publicly accessible virtual home in which scholars, community members and general visitors can engage in stories and analysis of St. Louis’ struggles and strengths. <i>We Are St. Louis</i> aims to fill that gap and to amplify and support often unheard or unarchived local stories, histories, and perspectives of St. Louisans in the process.<br />
+              
+              <br /><b>Contact</b><br />
+              <b>We Are St. Louis Project Directors</b><br />
+              <br /><b>Dr. lara kelland (she/they);</b> lara.kelland@umsl.edu<br />
+              <br />E. Desmond Lee Endowed Professor in Museum Studies and Community History
+              <br />Director of the Museums, Heritage, and Public History MA and Graduate Certificate
+              <br />Department of History
+              <br />University of Missouri-St. Louis<br />
+              <br /><b>Dr. Lauren Obermark (she/her); </b> obermarkl@umsl.edu<br />
+              <br /> Associate Professor
+              <br /> Department of English
+              <br /> University of Missouri-St. Louis
+              <a href="/login.html">Admin Sign In</a>
+              </p>
             </div>
            
           </div>
         </div>
       </div>
       <div>
+        
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-          aria-controls="offcanvasRight">Map Details</button>
+          aria-controls="offcanvasRight">Create a Post</button>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Map Details</h5>
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">How to Create a Post</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Information</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <p class="text-left">1. Click on the location of your story.</p>
+            <p class="text-left">2. Share your story in the text box below.</p>
+            <p class="text-left">3. (Optional) Add an image. If uploading an image, please describe your image in the alt text box field.</p>
+            <p class="text-left">4. Click submit!</p>
+            <hr>
+            <form name = "inputForm" id = "inputForm"  action = " " method = GET>
+              <div class="input-group">
+                <div class="form-outline">
+                  <label class="form-label mt-1" for="userText">Text:</label>
+                  <input type="text" id="userText" class="form-control" />
+                </div>
+              </div>
+              <div class = "input-group">
+                <div class="form-outline">
+                  <label class="form-label mt-4" for="userImage">Image:</label>
+                  <input type="file" class="form-control" id="userImage" />
+                  <span id = "image-error"> <!--Upload a picture to display map--> </span>
+                  <!-- <span class ="error_form" id = "userImage_error_message"> </span> -->
+                </div>
+              </div>
+              <br/>
+              <button type = "submit" class="btn btn-primary mt-3">Submit</button>
+          </form>
           </div>
         </div>
       </div>
