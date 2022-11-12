@@ -46,48 +46,37 @@
       <div>
         
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-          aria-controls="offcanvasRight">Map Details</button>
+          aria-controls="offcanvasRight">Create a Post</button>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Map Details</h5>
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">How to Create a Post</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
+            <p class="text-left">1. Click on the location of your story.</p>
+            <p class="text-left">2. Share your story in the text box below.</p>
+            <p class="text-left">3. (Optional) Add an image. If uploading an image, please describe your image in the alt text box field.</p>
+            <p class="text-left">4. Click submit!</p>
+            <hr>
             <form name = "inputForm" id = "inputForm"  action = " " method = GET>
-
               <div class="input-group">
-                  <label for = "userText"> Text: </label>
-                  <input id = "userText" type = "text" name= "userText" onKeyup = "validateText()"
-                         maxlength = "280" rows = "5" placeholder = "Add Text Here" required />
-                  <span id = "text-error"> <!-- Enter text to display map --> </span>
-                  <!-- <span class ="error_form" id = "userText_error_message"> </span> -->
-                  <!-- <div class="input-group">
-                      <label> Text: </label>
-                      <textarea rows = "3" maxlength = "280" placeholder = "Add Text Here"></textarea> -->
-                  <br/>
+                <div class="form-outline">
+                  <label class="form-label mt-1" for="userText">Text:</label>
+                  <input type="text" id="userText" class="form-control" />
+                </div>
               </div>
-          
               <div class = "input-group">
-                  <label for = "userImage"> Image: </label>
-                  <input id = "userImage" type = "file" name = "userImage" />
+                <div class="form-outline">
+                  <label class="form-label mt-4" for="userImage">Image:</label>
+                  <input type="file" class="form-control" id="userImage" />
                   <span id = "image-error"> <!--Upload a picture to display map--> </span>
                   <!-- <span class ="error_form" id = "userImage_error_message"> </span> -->
-                  <hr/>
-                  <br/>
+                </div>
               </div>
               <br/>
-          
-          
-              <input type = "submit" value = "Submit" />
-              <input type = "reset" value ="Reset" />
-          
+              <button type = "submit" class="btn btn-primary mt-3">Submit</button>
           </form>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Information</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
-            <button type="button" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </div>
