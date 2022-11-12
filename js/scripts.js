@@ -25,7 +25,7 @@ function validateText(){
     return true;
 
 }
-
+//
 /*
 form.addEventListener('submit', (e)=>{
     var inputText = document.getElementById("userText").value;
