@@ -11299,3 +11299,6 @@ textarea.form-control-lg {
   display: flex;
   justify-content: space-between;
 }
+.offcanvas-bottom{
+  height: 50vh!important;
+}

@@ -57,3 +57,4 @@ input.addEventListener('change', () =>{
     }
     imageError.innerText = '';
 })
+
