@@ -6,11 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+  <meta http-equiv="X-UA_Compatible" content="IE=edge">
   <title>Map</title>
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="assets/tabicon.png" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/styles.css" rel="stylesheet" />
+
+  <!---- used for font size in userinput textbox -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
@@ -76,33 +83,59 @@
             <p class="text-left">2. Share your story in the text box below.</p>
             <p class="text-left">3. (Optional) Add an image. If uploading an image, please describe your image in the alt text box field.</p>
             <p class="text-left">4. Click submit!</p>
-            <hr>
-            <form name = "inputForm" id = "inputForm"  action = "insert.php" method = POST>
-              <div class="input-group">
-                <div class="form-outline">
-                  <label class="form-label mt-1" for="userText">Text:</label>
-                  <input type="text" id="userText" class="form-control" name="userText"/>
+            <br/><br/><br/>
+
+            <!-- Ask user to enter their story in the text box -->
+              <div class = "container">
+                <textarea id="userText" rows="4"
+                 placeholder="Enter Your Story Here ..." required></textarea>
+                <!-- <span id ="error-messsage"></span> -->
+                <div class = "textAdded">
+                  <p id ="result"></p>
                 </div>
-              </div>
-              <div class = "input-group">
-                <div class="form-outline">
-                  <label class="form-label mt-4" for="userImage">Image:</label>
-                  <input type="file" class="form-control" id="userImage" />
-                  <span id = "image-error"> <!--Upload a picture to display map--> </span>
-                  <!-- <span class ="error_form" id = "userImage_error_message"> </span> -->
+
+
+                <!-- Ask user to upload image -->
+                <!-- only jpeg and png extensions are accepted -->
+                <input type="file" id="userImage" name="userImage" accept = "image/png, image/jpg">
+                <div class="image-preview" id="imagePreview">
+                  <img src="" alt="Image Preview" class="image-preview__image">
+                  <span class="image-preview__default-text">Image Preview</span>
                 </div>
-              </div>
-              <br/>
-              <button type = "submit" class="btn btn-primary mt-3">Submit</button>
-          </form>
+
+                <br/>
+
+                <!-- Enter description of image if preferred -->
+                <textarea id="imageDescription" name = imageDescription" rows="1"
+                      placeholder="Enter picture description if no image is uploaded"></textarea>
+                <div class = "imageTextAdded">
+                <p id ="imageResult"></p>
+                </div>
+
+
+            <!-- </div> -->
+
+              <button type = "submit" class="btn btn-primary">Submit</button>
+
+
+          <!--</form>-->
+          <!-- </div>  -->
           </div>
+
         </div>
+        </div>
+
       </div>
     </div>
   </div>
   <!-- Bootstrap core JS-->
+
   <script src="./js/map.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+
+
 </body>
 
 </html>

@@ -6304,7 +6304,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1rem;
+  padding: 0rem 1rem; /* change both to 1 rem if needed */
 }
 .offcanvas-header .btn-close {
   padding: 0.5rem 0.5rem;
@@ -11301,4 +11301,80 @@ textarea.form-control-lg {
 }
 .offcanvas-bottom{
   height: 50vh!important;
+}
+
+
+/* CSS for the textbox design */
+*,
+*:before,
+*:after{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+/*body{
+  background-color: #5d54b3;
+}*/
+
+.container{
+  background_color: #ffffff;
+  width: 450px;
+  padding:50px 50px;
+  position:absolute;
+  transform: translate(-50%,-50%);
+  top: 76%;
+  left: 50%;
+  border-radius: 15px;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.25);
+}
+
+.container{
+  font-family: "Poppins", sans-sherif;
+  font-size: 16px;
+}
+
+/* CSS design for the provided text box area (used for user input) */
+textarea{
+  display: block;
+  width: 100%;
+  resize: none;
+  padding:20px;
+  color: #202020;
+  border: 1.5px solid #b2b2b2;
+  border-radius: 5px;
+}
+
+.textAdded{
+  width:100%;
+  text-align: right;
+  margin-top:10px;
+  color: #737373;
+}
+
+.imageDescription{
+  display: none;
+}
+
+.image-preview{
+  width: 300px;
+  min-height: 50px;
+  border: 2px solid #dddddd;
+  /* margin-top: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #cccccc;
+}
+
+.image-preview__image{
+  display: none;
+  width: 100%;
+}
+
+.imageTextAdded{
+  width:100%;
+  text-align: right;
+  margin-top:10px;
+  color: #737373;
 }
