@@ -78,22 +78,33 @@
             <p class="text-left">4. Click submit!</p>
             <hr>
             <form name = "inputForm" id = "inputForm"  action = "insert.php" method = POST>
-              <div class="input-group">
-                <div class="form-outline">
-                  <label class="form-label mt-1" for="userText">Text:</label>
-                  <input type="text" id="userText" class="form-control" name="userText"/>
+              <div class="form-group">
+                <label class="form-label mt-1" for="userText">Text:</label>
+                <textarea class="form-control" id="userText" name="userText" rows="3"></textarea>
+                <div class="textAdded">
+                  <p id="result">0/280</p>
                 </div>
               </div>
               <div class = "input-group">
                 <div class="form-outline">
                   <label class="form-label mt-4" for="userImage">Image:</label>
-                  <input type="file" class="form-control" id="userImage" />
+                  <input type="file" class="form-control" id="userImage" accept = "image/png, image/jpg" />
                   <span id = "image-error"> <!--Upload a picture to display map--> </span>
                   <!-- <span class ="error_form" id = "userImage_error_message"> </span> -->
                 </div>
               </div>
-              <br/>
-              <button type = "submit" class="btn btn-primary mt-3">Submit</button>
+              <div class="image-preview" id="imagePreview">
+                <img src="" alt="Image Preview" class="image-preview__image">
+                <span class="image-preview__default-text">Image Preview</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label mt-3" for="altText">Describe your image:</label>
+                <input type="text" class="form-control" id="altText" placeholder="ex: A family having a picnic under the Arch">
+              </div>
+              <div class = "imageTextAdded">
+                <p id ="imageResult"></p>
+              </div>
+              <button id="theSubmitButton" type = "submit" class="btn btn-primary mt-4">Submit</button>
           </form>
           </div>
         </div>
