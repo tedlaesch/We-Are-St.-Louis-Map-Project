@@ -15,6 +15,7 @@ var minlimit = 0;
 var textLimitInvalid = true;
 var altLimitInvalid = true;
 
+
 resultLength.textContent = 0 + "/" + limit;
 //document.getElementById("userText").required = true;
 userInput.required = true;
@@ -107,6 +108,26 @@ userImage.addEventListener("change", function () {
     }
 });
 
+/******************************* Reset Image Function *****************************/
+function resetFile() {
+     userImage.value = ""; //reset image
+     const image = document.getElementById("imgPre");
+        image.src= ""; //reset preview
+     const text= document.getElementById("altText");
+        text.value="";
+        text.disabled = true; //resets the desrciption textbox to empty and disabled since no picture is selected
+}
+
+
+/*
+when story text is filled out, image attached, description enter. Then user decides to
+change photo via reset file button.
+BUG: number/color for describe your image stays
+FIX: number x/50 needs to be zero and color needs to change to none
+BUG: Form will automatically submit form when reset clicked with text, if no text it will bring you to fill out required story text field  .
+FIX: wait till submit button is pressed before submitting form
+ */
+
 /******************************* setButton Function *****************************/
 
 function setButton() {
@@ -116,3 +137,4 @@ function setButton() {
         submitButton.disabled = true;
     }
 }
+
