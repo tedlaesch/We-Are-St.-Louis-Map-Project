@@ -12,8 +12,8 @@ var userInput = document.getElementById("userText");
 var resultLength = document.getElementById("result");
 var limit = 280;
 var minlimit = 0;
-var textLimitInvalid = true;
-var altLimitInvalid = true;
+var textLimitValid = true;
+var altLimitValid = true;
 
 
 resultLength.textContent = 0 + "/" + limit;
@@ -32,14 +32,14 @@ userInput.addEventListener("keyup", function (e) {
     if (textLength <= minlimit || textLength > limit) {
         userInput.style.borderColor = "#ff2851";
         resultLength.style.color = "#ff2851";
-        textLimitInvalid = false;
+        textLimitValid = false;
     }
 
     // User enters a maximum of 280 characters, border and limit color are set to green
     else {
         userInput.style.borderColor = "#008000";
         resultLength.style.color = "#008000";
-        textLimitInvalid = true;
+        textLimitValid = true;
     }
 
     setButton();
@@ -58,6 +58,8 @@ var imageResultLength = document.getElementById("imageResult");
 var imageLimit = 50;
 var minImageLimit = 0;
 imageResultLength.textContent = 0 + "/" + imageLimit;
+altTextCountDef = imageResultLength.style.color;
+altTextBorderDef = imageDescription.style.borderColor;
 
 document.getElementById("altText").disabled = true;
 
@@ -71,13 +73,13 @@ imageDescription.addEventListener("keyup", function (e){
     if (imageTextLength <= minImageLimit || imageTextLength > imageLimit) {
         imageDescription.style.borderColor = "#ff2851";
         imageResultLength.style.color = "#ff2851";
-        altLimitInvalid = false;
+        altLimitValid = false;
     }
     //User enters less than 50, border and limit color are set to green
     else {
         imageDescription.style.borderColor = "#008000";
         imageResultLength.style.color = "#008000";
-        altLimitInvalid = true;
+        altLimitValid = true;
     }
 
     setButton();
@@ -116,22 +118,19 @@ function resetFile() {
      const text= document.getElementById("altText");
         text.value="";
         text.disabled = true; //resets the desrciption textbox to empty and disabled since no picture is selected
+        previewDefaultText.style.display = null;
+        previewImage.style.display = null;
+        imageDescription.style.borderColor = altTextBorderDef;
+        imageResultLength.style.color = altTextCountDef;
+        altLimitValid = true;
+        imageResultLength.textContent = 0 + "/" + imageLimit;
+        setButton();
 }
-
-
-/*
-when story text is filled out, image attached, description enter. Then user decides to
-change photo via reset file button.
-BUG: number/color for describe your image stays
-FIX: number x/50 needs to be zero and color needs to change to none
-BUG: Form will automatically submit form when reset clicked with text, if no text it will bring you to fill out required story text field  .
-FIX: wait till submit button is pressed before submitting form
- */
 
 /******************************* setButton Function *****************************/
 
 function setButton() {
-    if (textLimitInvalid && altLimitInvalid) {
+    if (textLimitValid && altLimitValid) {
         submitButton.disabled = false;
     } else {
         submitButton.disabled = true;
