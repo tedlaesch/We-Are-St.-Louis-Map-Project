@@ -13,21 +13,25 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 
+<!-- Page content-->
 <body>
-  <!-- Page content-->
-  <iframe class="interactive-map"
-    src="https://umstlouis.maps.arcgis.com/apps/instant/basic/index.html?appid=d89a4efd3f504d4faa5051e7259ecd15"
-    width="100%" height="100%" style="position:absolute;outline:none;" allowfullscreen>iFrames are not supported on this
+  <!-- ArcGIS Map-->
+  <iframe src="https://umstlouis.maps.arcgis.com/apps/instant/basic/index.html?appid=065dfae776cf44cb9f440dc9e94e129a"
+          width="100%" height="100%" style="position:absolute;outline:none;" allowfullscreen>iFrames are not supported on this
     page.</iframe>
+
+  <!-- We Are St. Louis Banner-->
   <div class="logo"> <!--Logo: centered to the top of the page, uses fluid container to dynamically resize in accordance to the window size-->
       <img src="assets/logonospace.png" class="img-fluid" alt="We are STL logo" style="display: block; margin-left: auto; margin-right: auto; width: 25%; position:relative;">
   </div>
+
+
   <div class="map-button">
     <div class="button-position">
       <div>
+        <!-- Info Button + Content-->
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-          aria-controls="offcanvasExample">
-        Info
+          aria-controls="offcanvasExample">Info
         </button>
 
         <div class="offcanvas offcanvas-start"  data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample"
@@ -38,31 +42,42 @@
           </div>
           <div class="offcanvas-body">
             <div>
-              <p>
-              <i>We Are St. Louis</i> is an online public history and storytelling project designed by a team of dedicated scholar-activists at the University of Missouri-St. Louis.  <br />
-              <br /><i>We Are St. Louis</i> first aims to serve as a publicly accessible, curated living digital collection that illuminates the network of oppressive systems in the region, while also lifting up the social change, creation, and joy that has long been undertaken by St. Louisans. The city of St. Louis and the broader region has a complex history of violence and oppression, but also a rich history of activism and resistance, from the Dred Scott decision to the Ferguson Uprising.<br />
-              <br />While there are other archives, historical sites, and scholarly projects that represent some of St. Louis’ past, present, and future, there is no publicly accessible virtual home in which scholars, community members and general visitors can engage in stories and analysis of St. Louis’ struggles and strengths. <i>We Are St. Louis</i> aims to fill that gap and to amplify and support often unheard or unarchived local stories, histories, and perspectives of St. Louisans in the process.<br />
-              
-              <br /><b>Contact</b><br />
-              <b>We Are St. Louis Project Directors</b><br />
-              <br /><b>Dr. lara kelland (she/they);</b> lara.kelland@umsl.edu<br />
-              <br />E. Desmond Lee Endowed Professor in Museum Studies and Community History
-              <br />Director of the Museums, Heritage, and Public History MA and Graduate Certificate
-              <br />Department of History
-              <br />University of Missouri-St. Louis<br />
-              <br /><b>Dr. Lauren Obermark (she/her); </b> obermarkl@umsl.edu<br />
-              <br /> Associate Professor
-              <br /> Department of English
-              <br /> University of Missouri-St. Louis
-              <br /><a href="login.html">Admin Sign In</a>
+              <b>We Are St. Louis</b>
+                <br><p> <i>We Are St. Louis</i> is an online public history and storytelling project designed by a team of dedicated scholar-activists at the University of Missouri-St. Louis.</p>
+                <p><i>We Are St. Louis</i> first aims to serve as a publicly accessible, curated living digital collection that illuminates the network of oppressive systems in the region, while also lifting up the social change, creation, and joy that has long been undertaken by St. Louisans. The city of St. Louis and the broader region has a complex history of violence and oppression, but also a rich history of activism and resistance, from the Dred Scott decision to the Ferguson Uprising.</p>
+                <p>While there are other archives, historical sites, and scholarly projects that represent some of St. Louis’ past, present, and future, there is no publicly accessible virtual home in which scholars, community members and general visitors can engage in stories and analysis of St. Louis’ struggles and strengths. <i>We Are St. Louis</i> aims to fill that gap and to amplify and support often unheard or unarchived local stories, histories, and perspectives of St. Louisans in the process.</p>
+                <hr>
+              </br>
+
+              <b>Moderation</b>
+                <br><p>Posts to We Are St. Louis are moderated by a small group of volunteers before they appear publically on the map. This to ensure no hate speech, spam or breaches of anonymity are added to the site. </p>
+                <p>Depending on the amount of posts that have been made over the past few months, there may become a backlog and we are doing our best to publish posts as quickly as we can. If you see anything you feel should be removed, or would like something you posted to be deleted, please contact us!</p>
+              <hr>
+              </br>
+
+              <b>Contact</b>
+                <b>We Are St. Louis Project Directors</b><br />
+                <br /><b>Dr. Lara Kelland (she/they);</b> lara.kelland@umsl.edu<br />
+                <br />E. Desmond Lee Endowed Professor in Museum Studies and Community History
+                <br />Director of the Museums, Heritage, and Public History MA and Graduate Certificate
+                <br />Department of History
+                <br />University of Missouri-St. Louis<br />
+                <br /><b>Dr. Lauren Obermark (she/her); </b> obermarkl@umsl.edu<br />
+                <br /> Associate Professor
+                <br /> Department of English
+                <br /> University of Missouri-St. Louis
+              <hr>
+              </br>
+
+              <a href="login.php">Admin Sign In</a>
               </p>
             </div>
-           
           </div>
         </div>
       </div>
       <div>
-        
+
+        <!-- Create a Post Button + Content -->
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight">Create a Post</button>
 
@@ -72,6 +87,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
+            <!-- Directions + link to survey -->
+            <p> 1. Click the link below to take you to a survey to create a post. </p>
+            <p> 2. Fill out the survey and wait for a "submitted successfully" screen. </p>
+            <p> 3. Once successfully submitted either submit another post or close the tab to return to this page.</p>
+            <p> </p>
+            <p><a href="https://arcg.is/1WXyXL" target="_blank">Submit a post here!</a></p>
+
+            <!--
             <p class="text-left">1. Click on the location of your story.</p>
             <p class="text-left">2. Share your story in the text box below.</p>
             <p class="text-left">3. (Optional) Add an image. If uploading an image, please describe your image in the alt text box field.</p>
@@ -89,8 +112,6 @@
                 <div class="form-outline">
                   <label class="form-label mt-4" for="userImage">Image:</label>
                   <input type="file" class="form-control" id="userImage" accept = "image/png, image/jpg" />
-                  <span id = "image-error"> <!--Upload a picture to display map--> </span>
-                  <!-- <span class ="error_form" id = "userImage_error_message"> </span> -->
                 </div>
               </div>
               <div class="image-preview" id="imagePreview">
@@ -105,7 +126,8 @@
                 <p id ="imageResult"></p>
               </div>
               <button id="theSubmitButton" type = "submit" class="btn btn-primary mt-4">Submit</button>
-          </form>
+            </form>
+            -->
           </div>
         </div>
       </div>
