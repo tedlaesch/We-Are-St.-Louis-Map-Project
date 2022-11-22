@@ -6,7 +6,7 @@ if (screen.width < 560) {
 }
 
 /**********************************************************************************************/
-
+/*
 // Validate text box area
 var userInput = document.getElementById("userText");
 var resultLength = document.getElementById("result");
@@ -34,7 +34,7 @@ userInput.addEventListener("keyup", function () {
 });
 /**********************************************************************************************/
 
-
+/*
 const userImage = document.getElementById("userImage");
 const previewDisplayed = document.getElementById("imagePreview");
 const previewImage = previewDisplayed.querySelector(".image-preview__image");
@@ -92,3 +92,5 @@ function setButton() {
         submitButton.disabled = true;
     }
 }
+
+ */

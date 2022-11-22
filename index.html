@@ -7,16 +7,16 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>Map</title>
-  <!-- Favicon-->
+  <!-- Image Icon-->
   <link rel="icon" type="image/x-icon" href="assets/tabicon.png" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <!-- Page content-->
 <body>
   <!-- ArcGIS Map-->
-  <iframe src="https://umstlouis.maps.arcgis.com/apps/instant/basic/index.html?appid=065dfae776cf44cb9f440dc9e94e129a"
+  <iframe class="interactive-map" src="https://umstlouis.maps.arcgis.com/apps/instant/basic/index.html?appid=065dfae776cf44cb9f440dc9e94e129a"
           width="100%" height="100%" style="position:absolute;outline:none;" allowfullscreen>iFrames are not supported on this
     page.</iframe>
 
@@ -29,11 +29,11 @@
   <div class="map-button">
     <div class="button-position">
       <div>
-        <!-- Info Button + Content-->
+        <!-- Info Button-->
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
           aria-controls="offcanvasExample">Info
         </button>
-
+        <!-- Info Content-->
         <div class="offcanvas offcanvas-start"  data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample"
           aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
@@ -43,7 +43,7 @@
           <div class="offcanvas-body">
             <div>
               <b>We Are St. Louis</b>
-                <br><p> <i>We Are St. Louis</i> is an online public history and storytelling project designed by a team of dedicated scholar-activists at the University of Missouri-St. Louis.</p>
+                <br><p><i>We Are St. Louis</i> is an online public history and storytelling project designed by a team of dedicated scholar-activists at the University of Missouri-St. Louis.</p>
                 <p><i>We Are St. Louis</i> first aims to serve as a publicly accessible, curated living digital collection that illuminates the network of oppressive systems in the region, while also lifting up the social change, creation, and joy that has long been undertaken by St. Louisans. The city of St. Louis and the broader region has a complex history of violence and oppression, but also a rich history of activism and resistance, from the Dred Scott decision to the Ferguson Uprising.</p>
                 <p>While there are other archives, historical sites, and scholarly projects that represent some of St. Louis’ past, present, and future, there is no publicly accessible virtual home in which scholars, community members and general visitors can engage in stories and analysis of St. Louis’ struggles and strengths. <i>We Are St. Louis</i> aims to fill that gap and to amplify and support often unheard or unarchived local stories, histories, and perspectives of St. Louisans in the process.</p>
                 <hr>
@@ -53,7 +53,7 @@
                 <br><p>Posts to We Are St. Louis are moderated by a small group of volunteers before they appear publically on the map. This to ensure no hate speech, spam or breaches of anonymity are added to the site. </p>
                 <p>Depending on the amount of posts that have been made over the past few months, there may become a backlog and we are doing our best to publish posts as quickly as we can. If you see anything you feel should be removed, or would like something you posted to be deleted, please contact us!</p>
               <hr>
-              </br>
+              <br>
 
               <b>Contact</b>
                 <b>We Are St. Louis Project Directors</b><br />
@@ -67,20 +67,19 @@
                 <br /> Department of English
                 <br /> University of Missouri-St. Louis
               <hr>
-              </br>
+              <br>
 
               <a href="login.php">Admin Sign In</a>
-              </p>
             </div>
           </div>
         </div>
       </div>
       <div>
 
-        <!-- Create a Post Button + Content -->
+        <!-- Create a Post Button -->
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
           aria-controls="offcanvasRight">Create a Post</button>
-
+        <!-- Create a Post Content-->
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">How to Create a Post</h5>
@@ -93,47 +92,13 @@
             <p> 3. Once successfully submitted either submit another post or close the tab to return to this page.</p>
             <p> </p>
             <p><a href="https://arcg.is/1WXyXL" target="_blank">Submit a post here!</a></p>
-
-            <!--
-            <p class="text-left">1. Click on the location of your story.</p>
-            <p class="text-left">2. Share your story in the text box below.</p>
-            <p class="text-left">3. (Optional) Add an image. If uploading an image, please describe your image in the alt text box field.</p>
-            <p class="text-left">4. Click submit!</p>
-            <hr>
-            <form name = "inputForm" id = "inputForm"  action = "insert.php" method = POST>
-              <div class="form-group">
-                <label class="form-label mt-1" for="userText">Text:</label>
-                <textarea class="form-control" id="userText" name="userText" rows="3"></textarea>
-                <div class="textAdded">
-                  <p id="result">0/280</p>
-                </div>
-              </div>
-              <div class = "input-group">
-                <div class="form-outline">
-                  <label class="form-label mt-4" for="userImage">Image:</label>
-                  <input type="file" class="form-control" id="userImage" accept = "image/png, image/jpg" />
-                </div>
-              </div>
-              <div class="image-preview" id="imagePreview">
-                <img src="" alt="Image Preview" class="image-preview__image">
-                <span class="image-preview__default-text">Image Preview</span>
-              </div>
-              <div class="form-group">
-                <label class="form-label mt-3" for="altText">Describe your image:</label>
-                <input type="text" class="form-control" id="altText" placeholder="ex: A family having a picnic under the Arch">
-              </div>
-              <div class = "imageTextAdded">
-                <p id ="imageResult"></p>
-              </div>
-              <button id="theSubmitButton" type = "submit" class="btn btn-primary mt-4">Submit</button>
-            </form>
-            -->
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Bootstrap core JS-->
+
+
   <script src="./js/map.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
