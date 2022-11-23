@@ -12,12 +12,38 @@
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/styles.css" rel="stylesheet" />
   <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 
 <!-- Page content-->
 <body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var url = window.location.search;
+      url = url.replace("?", '');
+      if (url == "0") {
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function(toastEl) {
+          return new bootstrap.Toast(toastEl)
+        })
+        toastList.forEach(toast => toast.show())
+      }
+    });
+  </script>
   <!-- OSM map-->
   <div id="container">
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 3;">
+      <div class="toast hide text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Success!</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body mb-1">
+          Your post has been submitted for review
+        </div>
+      </div>
+    </div>
     <div id = "map" style = "width: 100vw; height: 100vh; z-index: 1; position: absolute; top: 0; left: 0;"></div>
     <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
@@ -164,7 +190,7 @@
 
               <div class="form-group">
                 <label class="form-label mt-3" for="altText">Describe your image:</label>
-                <input type="text" class="form-control" id="altText" placeholder="ex: A family having a picnic under the Arch">
+                <input name="altText" type="text" class="form-control" id="altText" placeholder="ex: A family having a picnic under the Arch">
               </div>
               <div class = "imageTextAdded">
                 <p id ="imageResult"></p>

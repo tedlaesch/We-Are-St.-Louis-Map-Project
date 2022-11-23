@@ -27,15 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Also add additional form elements for coordinates
     var submitForm = document.getElementById('inputForm');
     var inputLat = document.createElement('input');
-    inputLat.setAttribute('name', "coord[lat]");
+    inputLat.setAttribute('name', "coordlat");
     inputLat.setAttribute('value', 0);
     inputLat.setAttribute('type', "hidden");
     var inputLng = document.createElement('input');
-    inputLng.setAttribute('name', "coord[lng]");
+    inputLng.setAttribute('name', "coordlng");
     inputLng.setAttribute('value', 0);
     inputLng.setAttribute('type', "hidden");
     submitForm.appendChild(inputLat);
-    submitForm.appendChild(inputLat);
+    submitForm.appendChild(inputLng);
 });
 
 userInput.addEventListener("keyup", function (e) {
@@ -159,11 +159,11 @@ function mapClicked(lat, lng) {
         // 0, 0 is technically a valid coordinate but all that is there is a weather buoy so we're using it as the "invalid" coordinate
         locationValid = true;
         document.getElementById("selectLocationMessage").style = "display: none";
-        document.getElementsByName("coord[lat]")[0].value = lat;
+        document.getElementsByName("coordlat")[0].value = lat.toFixed(6);
+        document.getElementsByName("coordlng")[0].value = lng.toFixed(6);
     } else {
         locationValid = false;
         document.getElementById("selectLocationMessage").style = "";
-        document.getElementsByName("coord[lng]")[0].value = lng;
     }
     setButton();
 }
