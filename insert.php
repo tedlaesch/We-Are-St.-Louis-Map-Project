@@ -95,6 +95,8 @@ if(isset($_POST['submit'])){
 /**************************************** SQL CONNECTION ***********************************/
 $conn = new mysqli("localhost", "root", "", "information"); //Establish connection to database "information"
 $posttext = $_POST["userText"]; //Get "usertext from form"
+$postlocationlon = $_POST["coord[lat]"];
+$postlocationlng = $_POST["coord[lng]"];
 $insert = "INSERT INTO information (posttext) VALUES ('$posttext')"; //variable that inserts what we want
 
 if ($conn->query($insert) === TRUE) { //inserts into table
@@ -107,3 +109,7 @@ $conn->close(); //closes connection
 ?>
 
 <h1>DATA WAS INSERTED</h1>
+<?php
+echo "Lat: " . $postlocationlon;
+echo "Lng: " . $postlocationlng;
+?>

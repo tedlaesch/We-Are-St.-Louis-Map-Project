@@ -53,6 +53,7 @@
           //alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
           selectPin.setLatLng([e.latlng.lat, e.latlng.lng]);
           selectPin.setOpacity(1);
+          mapClicked(e.latlng.lat, e.latlng.lng);
         });
 
         // Adding a marker to the map
@@ -168,6 +169,7 @@
               <div class = "imageTextAdded">
                 <p id ="imageResult"></p>
               </div>
+              <div class="text-danger text-center mb-2" id="selectLocationMessage">Please click on the map to select the location of your story</div>
               <button id="theSubmitButton" name="submit" type = "submit"
                       class="btn btn-primary mt-4" value="insert">Submit</button>
             </form>
