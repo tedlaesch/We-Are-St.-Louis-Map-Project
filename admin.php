@@ -72,7 +72,7 @@
                         card.style = 'width: 18rem;';
 
                         cardImage = document.createElement('img');
-                        imagenum = "pictures/" + imagearr[i] + ".png";
+                        imagenum = imagearr[i];
                         cardImage.setAttribute("src", imagenum);
                         cardImage.className = 'card-img-top';
 
@@ -103,8 +103,10 @@
                         cardDeny.innerHTML = 'Deny'
 
                         cardBody.appendChild(cardText);
-                        cardTextAlt.appendChild(cardAlt);
-                        cardBody.appendChild(cardTextAlt);
+                        if (altarr[i]) {
+                            cardTextAlt.appendChild(cardAlt);
+                            cardBody.appendChild(cardTextAlt);
+                        }
                         cardBody.appendChild(cardApprove);
                         cardBody.appendChild(cardDeny);
                         card.appendChild(cardImage);

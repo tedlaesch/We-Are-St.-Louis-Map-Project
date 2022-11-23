@@ -5,7 +5,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $mysqli = new mysqli('localhost', 'root', '', 'auth');
+    $mysqli = new mysqli('localhost', 'root', '', 'map');
 
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);

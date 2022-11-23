@@ -9,7 +9,7 @@ if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $mysqli = new mysqli('localhost', 'root', '', 'auth');
+    $mysqli = new mysqli('localhost', 'root', '', 'map');
 
     if ($mysqli->connect_errno) {
         // May be good to have a proper error display here
