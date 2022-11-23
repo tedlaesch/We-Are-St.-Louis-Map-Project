@@ -113,5 +113,5 @@ $conn->close(); //closes connection
 //echo "Lat: " . $postlocationlat . "\n";
 //echo "Lng: " . $postlocationlng;
 
-header("Location: index.html?0");
+header("Location: index.php?0");
 ?>

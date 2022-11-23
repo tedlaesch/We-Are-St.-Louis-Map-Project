@@ -19,6 +19,7 @@
 <!-- Page content-->
 <body>
   <script>
+    // Script to show the toast on return from insert.php
     document.addEventListener('DOMContentLoaded', function () {
       var url = window.location.search;
       url = url.replace("?", '');
@@ -31,8 +32,8 @@
       }
     });
   </script>
-  <!-- OSM map-->
   <div id="container">
+    <!-- Toast -->
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 3;">
       <div class="toast hide text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
@@ -44,6 +45,8 @@
         </div>
       </div>
     </div>
+
+    <!-- OSM map-->
     <div id = "map" style = "width: 100vw; height: 100vh; z-index: 1; position: absolute; top: 0; left: 0;"></div>
     <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
@@ -76,7 +79,6 @@
 
         // Coordinate click technology!
         map.on('click', function(e) {
-          //alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
           selectPin.setLatLng([e.latlng.lat, e.latlng.lng]);
           selectPin.setOpacity(1);
           mapClicked(e.latlng.lat, e.latlng.lng);
@@ -87,6 +89,55 @@
         // Adding a popup to the marker
         // The popup is really just a <div> so you can put any kind of HTML you want into bindPopup() and it'll work!
         tempMarker.bindPopup('<center>This is a test message!</center><br/>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="150px" width="150px"/>');
+
+        // Add all markers from the database
+        <?php
+        $connection = mysqli_connect("localhost","root","","map") or die("Error " . mysqli_error($connection));
+        $sql = "select * from posts";
+        $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
+        $text = array();
+        $image = array();
+        $alt = array();
+        $lat = array();
+        $lng = array();
+        $approved = array();
+        $id = array();
+
+        while($row =mysqli_fetch_assoc($result))
+        {
+            $text[] = $row["text"];
+            $image[] = $row["image"];
+            $alt[] = $row["alt"];
+            $lat[] = $row["lat"];
+            $lng[] = $row["lng"];
+            $approved[] = $row["approved"];
+            $id[] = $row["id"];
+        }
+        ?>
+
+        var textarr = <?php echo json_encode($text, JSON_HEX_TAG); ?>;
+        var imagearr = <?php echo json_encode($image, JSON_HEX_TAG); ?>;
+        var altarr = <?php echo json_encode($alt, JSON_HEX_TAG); ?>;
+        var latarr = <?php echo json_encode($lat, JSON_HEX_TAG); ?>;
+        var lngarr = <?php echo json_encode($lng, JSON_HEX_TAG); ?>;
+        var approvedarr = <?php echo json_encode($approved, JSON_HEX_TAG); ?>;
+        var idarr = <?php echo json_encode($id, JSON_HEX_TAG); ?>;
+
+        <?php
+        mysqli_close($connection);
+        ?>
+
+        for (i = 0; i < idarr.length; i++) {
+          currentMarker = L.marker([latarr[i], lngarr[i]], riseOnHover=true).addTo(map);
+          popupContents = '<hr/><div class="text-center mb-4"><p class="mb-0" style="font-size: 1.25em;">' + textarr[i] + '</p></div>';
+          if (imagearr[i]) {
+            popupImage = '<hr/><img src="' + imagearr[i] + '" height="150px"/>'
+            popupContents = popupImage.concat(popupContents);
+            currentMarker.bindPopup(popupContents, {maxWidth : "auto"});
+          } else {
+            currentMarker.bindPopup(popupContents, {minWidth : 300});
+          }
+        }
     </script>
 
     <!--Logo: centered to the top of the page, uses fluid container to dynamically resize in accordance to the window size-->

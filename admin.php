@@ -40,7 +40,7 @@
                         var card, cardImage, cardBody, cardText;
 
                         <?php 
-                        $connection = mysqli_connect("localhost","root","","auth") or die("Error " . mysqli_error($connection));
+                        $connection = mysqli_connect("localhost","root","","map") or die("Error " . mysqli_error($connection));
                         $sql = "select * from posts";
                         $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
                         $text = array();
@@ -113,7 +113,7 @@
                         }
                     })
                     function buttonBack() {
-                        window.location.href = "index.html";
+                        window.location.href = "index.php";
                     }
                     function buttonLogOut() {
                         window.location.replace("logout.php");
