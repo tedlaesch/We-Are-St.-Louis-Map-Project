@@ -20,10 +20,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col">
-                        <button id="back_button" type="button" onclick="buttonLogOut()" class="btn btn-primary btn-lg btn-info mt-4 mb-4">Map</button>
+                        <button id="back_button" type="button" onclick="buttonBack()" class="btn btn-primary btn-lg btn-info mt-4 mb-4">Map</button>
                         </div>
-                        <div class="col-6 text-center">
-                            <h1 class='display-2 mb-3'>Post Queue</h1>
+                        <div class="col text-center">
+                            <h1 class='mb-3 mt-3'>Post Queue</h1>
                         </div>
                         <div class="col text-right">
                         <button id="logout_button" type="button" onclick="buttonLogOut()" class="btn btn-primary btn-lg btn-danger mt-4 mb-4">Log out</button>
@@ -47,12 +47,14 @@
                         $image = array();
                         $alt = array();
                         $id = array();
+                        $approved = array();
                         while($row =mysqli_fetch_assoc($result))
                         {
                             $text[] = $row["text"];
                             $image[] = $row["image"];
                             $alt[] = $row["alt"];
                             $id[] = $row["id"];
+                            $approved[] = $row["approved"];
                         }
                         ?>
                         
@@ -60,58 +62,61 @@
                         var imagearr = <?php echo json_encode($image, JSON_HEX_TAG); ?>;
                         var altarr = <?php echo json_encode($alt, JSON_HEX_TAG); ?>;
                         var idarr = <?php echo json_encode($id, JSON_HEX_TAG); ?>;
+                        var approvedarr = <?php echo json_encode($approved, JSON_HEX_TAG); ?>;
 
                         <?php
                         mysqli_close($connection);
                         ?>
 
                         for (i = 0; i < textarr.length; i++) {
-                        card = document.createElement('div');
-                        card.className = 'card text-center mb-5 bg-light w-75 mx-auto';
-                        card.id = "card" + idarr[i];
-                        card.style = 'width: 18rem;';
+                            if (approvedarr[i] == 0) {
+                                card = document.createElement('div');
+                                card.className = 'card text-center mb-5 bg-light w-75 mx-auto';
+                                card.id = "card" + idarr[i];
+                                card.style = 'width: 18rem;';
 
-                        cardImage = document.createElement('img');
-                        imagenum = imagearr[i];
-                        cardImage.setAttribute("src", imagenum);
-                        cardImage.className = 'card-img-top';
+                                cardImage = document.createElement('img');
+                                imagenum = imagearr[i];
+                                cardImage.setAttribute("src", imagenum);
+                                cardImage.className = 'card-img-top';
 
-                        cardBody = document.createElement('div');
-                        cardBody.className = 'card-body';
+                                cardBody = document.createElement('div');
+                                cardBody.className = 'card-body';
 
-                        cardText = document.createElement('p');
-                        cardText.className = 'card-text';
-                        cardText.innerHTML = textarr[i];
+                                cardText = document.createElement('p');
+                                cardText.className = 'card-text';
+                                cardText.innerHTML = textarr[i];
 
-                        cardTextAlt = document.createElement('p');
-                        cardTextAlt.className = 'card-text';
+                                cardTextAlt = document.createElement('p');
+                                cardTextAlt.className = 'card-text';
 
-                        cardAlt = document.createElement('small');
-                        cardAlt.className = 'text-muted';
-                        cardAlt.innerHTML = 'alt: ' + altarr[i];
+                                cardAlt = document.createElement('small');
+                                cardAlt.className = 'text-muted';
+                                cardAlt.innerHTML = 'alt: ' + altarr[i];
 
-                        cardApprove = document.createElement('a');
-                        cardApprove.className = 'btn btn-primary btn-lg btn-success mr-2 text-light';
-                        cardApprove.id = idarr[i];
-                        cardApprove.setAttribute("onClick", "buttonApprove(this.id)");
-                        cardApprove.innerHTML = 'Approve'
+                                cardApprove = document.createElement('a');
+                                cardApprove.className = 'btn btn-primary btn-lg btn-success mr-2 text-light';
+                                cardApprove.id = idarr[i];
+                                cardApprove.setAttribute("onClick", "buttonApprove(this.id)");
+                                cardApprove.innerHTML = 'Approve'
 
-                        cardDeny = document.createElement('a');
-                        cardDeny.className = 'btn btn-primary btn-danger btn-lg text-light';
-                        cardDeny.id = idarr[i];
-                        cardDeny.setAttribute("onClick", "buttonDeny(this.id)");
-                        cardDeny.innerHTML = 'Deny'
+                                cardDeny = document.createElement('a');
+                                cardDeny.className = 'btn btn-primary btn-danger btn-lg text-light';
+                                cardDeny.id = idarr[i];
+                                cardDeny.setAttribute("onClick", "buttonDeny(this.id)");
+                                cardDeny.innerHTML = 'Deny'
 
-                        cardBody.appendChild(cardText);
-                        if (altarr[i]) {
-                            cardTextAlt.appendChild(cardAlt);
-                            cardBody.appendChild(cardTextAlt);
-                        }
-                        cardBody.appendChild(cardApprove);
-                        cardBody.appendChild(cardDeny);
-                        card.appendChild(cardImage);
-                        card.appendChild(cardBody);
-                        document.getElementById("scroll-box").appendChild(card);
+                                cardBody.appendChild(cardText);
+                                if (altarr[i]) {
+                                    cardTextAlt.appendChild(cardAlt);
+                                    cardBody.appendChild(cardTextAlt);
+                                }
+                                cardBody.appendChild(cardApprove);
+                                cardBody.appendChild(cardDeny);
+                                card.appendChild(cardImage);
+                                card.appendChild(cardBody);
+                                document.getElementById("scroll-box").appendChild(card);
+                            }
                         }
                     })
                     function buttonBack() {

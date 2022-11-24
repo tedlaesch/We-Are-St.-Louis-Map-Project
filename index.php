@@ -86,7 +86,7 @@
 
         // Adding a marker to the map
         //tempMarker = L.marker([38.6253112804894, -90.18671821476585], riseOnHover=true).addTo(map);
-        
+
         // Adding a popup to the marker
         // The popup is really just a <div> so you can put any kind of HTML you want into bindPopup() and it'll work!
         //tempMarker.bindPopup('<center>This is a test message!</center><br/>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="150px" width="150px"/>');
@@ -131,10 +131,12 @@
         for (i = 0; i < idarr.length; i++) {
           if (approvedarr[i] == 1) {
             currentMarker = L.marker([latarr[i], lngarr[i]], riseOnHover=true).addTo(map);
-            popupContents = '<hr/><div class="text-center mb-4"><p class="mb-0" style="font-size: 1.25em;">' + textarr[i] + '</p></div>';
+            popupContents = '<hr/><div class="text-center mb-2"><p class="mb-0" style="font-size: 1.25em;">' + textarr[i] + '</p></div>';
             if (imagearr[i]) {
-              popupImage = '<hr/><img src="' + imagearr[i] + '" height="150px"/>'
+              popupImage = '<hr/><img src="' + imagearr[i] + '" height="150px"/>';
+              popupAlt = '<div class="text-center mb-4"><small><i>' + "Description: " + altarr[i] + '</i></small></div>';
               popupContents = popupImage.concat(popupContents);
+              popupContents = popupContents.concat(popupAlt);
               currentMarker.bindPopup(popupContents, {maxWidth : "auto"});
             } else {
               currentMarker.bindPopup(popupContents, {minWidth : 300});

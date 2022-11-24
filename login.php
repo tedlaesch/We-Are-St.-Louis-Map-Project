@@ -75,21 +75,6 @@ if (isset($_POST['username'])) {
                         <input type="password" id="password" name="password" class="form-control" />
                         <label class="form-label mt-1" for="password">Password</label>
                         </div>
-                    
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4 mt-2">
-                            <div class="col d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="remember" checked />
-                                    <label class="form-check-label" for="remember"> Remember me </label>
-                                </div>
-                            </div>
-                        
-                            <div class="col d-flex justify-content-center">
-                                <a href="#!">Forgot password?</a>
-                            </div>
-                        </div>
 
                         <?php
                         if ($invalid == true) {
@@ -100,13 +85,19 @@ if (isset($_POST['username'])) {
                         ?>
                     
                         <!-- Submit button -->
-                        <div class="row col-6 mx-auto">
+                        <div class="row col mx-auto">
                             <button id="submit_button" type="submit" class="btn btn-primary btn-block mt-4">Sign in</button>
+                            <button id="logout_button" type="button" onclick="buttonBack()" class="btn btn-primary btn-block btn-danger mt-4 mb-4">Back</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <script>
+            function buttonBack() {
+                window.location.href = "index.php";
+            }
+        </script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
