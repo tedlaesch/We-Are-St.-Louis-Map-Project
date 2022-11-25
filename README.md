@@ -54,3 +54,26 @@ posts
 
 Command line code to clone this particular branch: `git clone -b auth_OSM https://comp.umsl.edu/gitlab/epbx7c/stlwd.git`
 
+
+SQL to create above database:
+
+```
+CREATE DATABASE test;
+CREATE TABLE `test`.`accounts` (
+    `account_name` VARCHAR(256) NOT NULL, 
+	`account_hash` VARCHAR(256) NOT NULL,
+    PRIMARY KEY (`account_name`)
+	) ENGINE = InnoDB;
+ALTER TABLE `test`.`accounts` ADD INDEX(`account_name`);
+CREATE TABLE `test`.`posts` (
+    `id` INT(255) NOT NULL AUTO_INCREMENT, 
+    `text` VARCHAR(280) NOT NULL,
+    `image` VARCHAR(256) NOT NULL,
+    `alt` VARCHAR(50) NOT NULL,
+    `lat` DECIMAL(9,6) NOT NULL,
+    `lng` DECIMAL(9,6) NOT NULL,
+    `approved` BOOLEAN NOT NULL,
+    PRIMARY KEY (`id`)
+	) ENGINE = InnoDB;
+ALTER TABLE `test`.`posts` ADD INDEX(`id`);
+```
