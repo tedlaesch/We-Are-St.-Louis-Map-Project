@@ -26,7 +26,7 @@ accounts
 		- length: 256
 
 posts
-- Columns are id, text, image, alt, lat, and lng
+- Columns are id, text, image, alt, lat, lng, and approved
 	- id
 		- type: INT
 		- length: 255
