@@ -97,13 +97,13 @@
                                 cardApprove = document.createElement('a');
                                 cardApprove.className = 'btn btn-primary btn-lg btn-success mr-2 text-light';
                                 cardApprove.id = idarr[i];
-                                cardApprove.setAttribute("onClick", "buttonApprove(this.id)");
+                                cardApprove.setAttribute("onClick", "buttonApprove(this.id), window.location.reload()");
                                 cardApprove.innerHTML = 'Approve'
 
                                 cardDeny = document.createElement('a');
                                 cardDeny.className = 'btn btn-primary btn-danger btn-lg text-light';
                                 cardDeny.id = idarr[i];
-                                cardDeny.setAttribute("onClick", "buttonDeny(this.id)");
+                                cardDeny.setAttribute("onClick", "buttonDeny(this.id), window.location.reload()");
                                 cardDeny.innerHTML = 'Deny'
 
                                 cardBody.appendChild(cardText);
@@ -126,10 +126,14 @@
                         window.location.replace("logout.php");
                     }
                     function buttonApprove(elementid) {
-                        // This needs to contain logic to remove the element from the list and swap databases
+                        var xhr = new XMLHttpRequest(); //Opens AJAX to pass id to approve.php
+                        xhr.open("GET", "approve.php?id=" + elementid, true); //sends id of post to approve.php
+                        xhr.send(null);
                     }
                     function buttonDeny(elementid) {
-                        // This needs to contain logic to remove the element from the list
+                        var xhr = new XMLHttpRequest(); //Opens AJAX to pass id to delete.php
+                        xhr.open("GET", "delete.php?id=" + elementid, true); //sends id of post to delete.php
+                        xhr.send(null);
                     }
                 </script>
                 <!-- Admin page end -->
