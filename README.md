@@ -58,14 +58,14 @@ Command line code to clone this particular branch: `git clone -b auth_OSM https:
 SQL to create above database:
 
 ```
-CREATE DATABASE test;
-CREATE TABLE `test`.`accounts` (
+CREATE DATABASE map;
+CREATE TABLE `map`.`accounts` (
     `account_name` VARCHAR(256) NOT NULL, 
 	`account_hash` VARCHAR(256) NOT NULL,
     PRIMARY KEY (`account_name`)
 	) ENGINE = InnoDB;
-ALTER TABLE `test`.`accounts` ADD INDEX(`account_name`);
-CREATE TABLE `test`.`posts` (
+ALTER TABLE `map`.`accounts` ADD INDEX(`account_name`);
+CREATE TABLE `map`.`posts` (
     `id` INT(255) NOT NULL AUTO_INCREMENT, 
     `text` VARCHAR(280) NOT NULL,
     `image` VARCHAR(256) NOT NULL,
@@ -75,5 +75,5 @@ CREATE TABLE `test`.`posts` (
     `approved` BOOLEAN NOT NULL,
     PRIMARY KEY (`id`)
 	) ENGINE = InnoDB;
-ALTER TABLE `test`.`posts` ADD INDEX(`id`);
+ALTER TABLE `map`.`posts` ADD INDEX(`id`);
 ```
