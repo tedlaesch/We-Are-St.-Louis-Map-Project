@@ -14,12 +14,29 @@ var limit = 280;
 var minlimit = 0;
 var textLimitValid = true;
 var altLimitValid = true;
+var locationValid = false;
 
 
 resultLength.textContent = 0 + "/" + limit;
 //document.getElementById("userText").required = true;
 userInput.required = true;
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Make sure to run validation one time right when the site loads
+    setButton();
+    // Also add additional form elements for coordinates
+    var submitForm = document.getElementById('inputForm');
+    var inputLat = document.createElement('input');
+    inputLat.setAttribute('name', "coordlat");
+    inputLat.setAttribute('value', 0);
+    inputLat.setAttribute('type', "hidden");
+    var inputLng = document.createElement('input');
+    inputLng.setAttribute('name', "coordlng");
+    inputLng.setAttribute('value', 0);
+    inputLng.setAttribute('type', "hidden");
+    submitForm.appendChild(inputLat);
+    submitForm.appendChild(inputLng);
+});
 
 userInput.addEventListener("keyup", function (e) {
     e.preventDefault()
@@ -130,10 +147,23 @@ function resetFile() {
 /******************************* setButton Function *****************************/
 
 function setButton() {
-    if (textLimitValid && altLimitValid) {
+    if (textLimitValid && altLimitValid && locationValid) {
         submitButton.disabled = false;
     } else {
         submitButton.disabled = true;
     }
 }
 
+function mapClicked(lat, lng) {
+    if (lat != 0 && lng != 0) {
+        // 0, 0 is technically a valid coordinate but all that is there is a weather buoy so we're using it as the "invalid" coordinate
+        locationValid = true;
+        document.getElementById("selectLocationMessage").style = "display: none";
+        document.getElementsByName("coordlat")[0].value = lat.toFixed(6);
+        document.getElementsByName("coordlng")[0].value = lng.toFixed(6);
+    } else {
+        locationValid = false;
+        document.getElementById("selectLocationMessage").style = "";
+    }
+    setButton();
+}
