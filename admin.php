@@ -26,12 +26,13 @@
                             <h1 class='mb-3 mt-3'>Post Queue</h1>
                         </div>
                         <div class="col text-right">
-                        <button id="logout_button" type="button" onclick="buttonLogOut()" class="btn btn-primary btn-lg btn-danger mt-4 mb-4">Log out</button>
+                        <button id="logout_button" type="button" onclick="buttonLogOut()" class="btn btn-primary btn-lg btn-danger mt-4 mb-2">Log out</button><br/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center mx-auto">
-                            <div id="scroll-box" class="overflow-auto" style="height:90vh;"></div>
+                            <div id="scroll-box" class="overflow-auto" style="height:86vh;"></div>
+                            <button id="addadmin_button" type="button" onclick="location.href='adduser.php'" class="btn btn-primary btn-lg btn-warning mt-3 mb-2">Add new administrator account</button>
                         </div>
                     </div>
                 </div>

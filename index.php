@@ -52,12 +52,15 @@
     <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
     <script>
         // vars
-        var selectPin = L.marker([0,0], opacity = 0);
+        var selectPin = L.marker([0,0]);
+        selectPin.setOpacity(0);
 
         // Creating map options - coordinates are the Gateway Arch
         var mapOptions = {
         center: [38.6253112804894, -90.18671821476585],
-        zoom: 12
+        zoom: 12,
+        maxZoom: 17,
+        minZoom: 3
         }
         
         // Creating a map object
@@ -137,9 +140,19 @@
               popupAlt = '<div class="text-center mb-4"><small><i>' + "Description: " + altarr[i] + '</i></small></div>';
               popupContents = popupImage.concat(popupContents);
               popupContents = popupContents.concat(popupAlt);
-              currentMarker.bindPopup(popupContents, {maxWidth : "auto"});
+              var newPopup = L.popup({
+                offset: [0, 0],
+                minWidth: "auto"
+              }).setContent(popupContents);
+              currentMarker.bindPopup(newPopup);
+              currentMarker.openPopup();
+              currentMarker.closePopup();
             } else {
-              currentMarker.bindPopup(popupContents, {minWidth : 300});
+              var newPopup = L.popup({
+                offset: [0, 0],
+                minWidth: 300
+              }).setContent(popupContents);
+              currentMarker.bindPopup(newPopup);
             }
           }
         }

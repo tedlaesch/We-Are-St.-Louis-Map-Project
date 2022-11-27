@@ -87,7 +87,7 @@ if (isset($_POST['username'])) {
                         <!-- Submit button -->
                         <div class="row col mx-auto">
                             <button id="submit_button" type="submit" class="btn btn-primary btn-block mt-4">Sign in</button>
-                            <button id="logout_button" type="button" onclick="buttonBack()" class="btn btn-primary btn-block btn-danger mt-4 mb-4">Back</button>
+                            <button id="back_button" type="button" onclick="buttonBack()" class="btn btn-primary btn-block btn-danger mt-4 mb-4">Back</button>
                         </div>
                     </form>
                 </div>
