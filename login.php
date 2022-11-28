@@ -58,7 +58,7 @@ if (isset($_POST['username'])) {
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6 d-flex justify-content-center pt-5">
-                    <h1>Administrator Login</h1>
+                    <h1 class="text-center">Administrator Login</h1>
                 </div>
             </div>
             <div class="row justify-content-center">

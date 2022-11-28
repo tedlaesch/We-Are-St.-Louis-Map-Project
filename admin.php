@@ -19,20 +19,21 @@
                 <!-- Admin page here -->
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col">
-                        <button id="back_button" type="button" onclick="buttonBack()" class="btn btn-primary btn-lg btn-info mt-4 mb-4">Map</button>
+                        <div class="col-3">
+                            <button id="back_button" type="button" onclick="buttonBack()" class="btn btn-primary btn-lg btn-info mt-4">Map</button>
                         </div>
-                        <div class="col text-center">
-                            <h1 class='mb-3 mt-3'>Post Queue</h1>
+                        <div class="col-6 text-center">
+                            <h1 class="mb-3 mt-3">Post Queue</h1>
                         </div>
-                        <div class="col text-right">
-                        <button id="logout_button" type="button" onclick="buttonLogOut()" class="btn btn-primary btn-lg btn-danger mt-4 mb-2">Log out</button><br/>
+                        <div class="col-3 text-right">
+                            <button id="logout_button" type="button" onclick="buttonLogOut()" class="btn btn-primary btn-lg btn-danger mt-4 mb-2 font-size: 3vw;">Log out</button><br/>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center mx-auto">
-                            <div id="scroll-box" class="overflow-auto" style="height:86vh;"></div>
-                            <button id="addadmin_button" type="button" onclick="location.href='adduser.php'" class="btn btn-primary btn-lg btn-warning mt-3 mb-2">Add new administrator account</button>
+                        <div class="col text-center ">
+                            <div id="scroll-box" class="overflow-auto" style="height:86vh;">
+                                <button id="addadmin_button" type="button" onclick="location.href='adduser.php'" class="btn btn-primary btn-lg btn-warning mt-0 mb-2">Add new administrator account</button>
+                            </div>
                         </div>
                     </div>
                 </div>
