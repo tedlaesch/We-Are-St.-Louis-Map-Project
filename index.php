@@ -188,10 +188,8 @@
                     aria-controls="offcanvasExample"> Info
             </button>
 
-            <!--HOME BUTTON-->
-            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-                    aria-controls="offcanvasExample"> Info
-            </button>
+        <!--HOME BUTTON-->
+        <button class="btn btn-primary" type="button" id="home" onclick="centerMap()">Home</button>
 
             <div class="offcanvas offcanvas-start"  data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample"
                  aria-labelledby="offcanvasExampleLabel">
