@@ -171,9 +171,14 @@ p {
   z-index: 9999;
   position: absolute;
   width: 100%;
-  top:134px;
+  bottom:20px;
   padding:0 13px;
 }
+
+.info-button{
+  position: absolute;
+}
+
 .button-position{
   display: flex;
   justify-content: space-between;

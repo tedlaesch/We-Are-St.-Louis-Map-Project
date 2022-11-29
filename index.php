@@ -103,7 +103,8 @@
 
         // Add search bar and logic
         var geocoder = L.Control.geocoder({
-            defaultMarkGeocode: false
+            defaultMarkGeocode: false,
+            position: 'topleft'
         })
         .on('markgeocode', function(e) {
             selectPin.setLatLng([e.geocode.center.lat, e.geocode.center.lng]);
@@ -204,7 +205,7 @@
     <div class="button-position">
         <div>
             <!--INFO PAGE-->
-            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            <button class="btn btn-primary info-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample"> Info
             </button>
 
