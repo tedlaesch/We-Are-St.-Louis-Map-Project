@@ -9,9 +9,20 @@
     <title>Map</title>
     <!-- Tab Icon-->
     <link rel="icon" type="image/x-icon" href="assets/tabicon.png" />
-    <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <!-- Core theme CSS (and Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <!-- Leaflet js and css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <!-- Easy Button Plugin -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <!-- Searchbar js and css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script>
@@ -57,7 +68,6 @@
 
     <!-- OSM map-->
     <div id = "map" style = "width: 100vw; height: 100vh; z-index: 1; position: absolute; top: 0; left: 0;"></div>
-    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
     <script>
         // vars
@@ -78,13 +88,31 @@
 
         // Better looking layer in my opinion
         var Stamen_Terrain = new L.TileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg');
+
+        var ARC_Map = new L.TileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}.png');
         // -------------- //
 
         // Adding the base layer to the map
-        map.addLayer(Stamen_Terrain);
+        map.addLayer(ARC_Map);
+
+        // Add search bar
+        //L.Control.geocoder().addTo(map);
 
         // Pointer pin
         selectPin.addTo(map);
+
+        // Add search bar and logic
+        var geocoder = L.Control.geocoder({
+            defaultMarkGeocode: false
+        })
+        .on('markgeocode', function(e) {
+            selectPin.setLatLng([e.geocode.center.lat, e.geocode.center.lng]);
+            selectPin.setOpacity(1);
+            mapClicked(e.geocode.center.lat, e.geocode.center.lng);
+            map.flyTo([e.geocode.center.lat, e.geocode.center.lng], 16);
+            console.log(e);
+        })
+        .addTo(map);
 
         // Coordinate click technology!
         map.on('click', function(e) {
@@ -152,6 +180,17 @@
                 }
             }
         }
+
+        // Add a home button with Easy Buttons Plugin
+        var home = {
+        lat: 38.6253112804894,
+        lng: -90.18671821476585,
+        zoom: 12
+        }; 
+
+        L.easyButton('fa-home',function(btn,map){
+        map.flyTo([home.lat, home.lng], home.zoom);
+        },'Zoom To Home').addTo(map);
     </script>
 
     <!--Logo: centered to the top of the page, uses fluid container to dynamically resize in accordance to the window size-->
