@@ -26,6 +26,7 @@
 
 <!-- Page content-->
 <body>
+
 <script>
     // Script to show the toast on return from insert.php
     document.addEventListener('DOMContentLoaded', function () {

@@ -16,6 +16,7 @@
                 header("Location:login.php");
             } else {
                 $userexists = false;
+                $accountcreated = false;
                 if (isset($_POST['username']) && isset($_POST['password'])) {
                     $connection = mysqli_connect("localhost","root","","map") or die("Error " . mysqli_error($connection));
                     $sql = "select account_name from accounts";
@@ -47,6 +48,7 @@
 
                         $stmt->close();
                         $mysqli->close();
+                        $accountcreated = true;
                     } else {
                         $userexists = true;
                     }
@@ -84,6 +86,14 @@
                                 if ($userexists == true) {
                                 ?>  
                                 <div class="text-danger text-center mb-2">Username already exists</div>
+                                <?php
+                                }
+                                ?>
+
+                                <?php
+                                if ($accountcreated == true) {
+                                ?>  
+                                <div class="text-success text-center mb-2">Account created!</div>
                                 <?php
                                 }
                                 ?>
