@@ -12,6 +12,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <!--This stylesheet is used by the search box-->
+    <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script>
@@ -58,6 +60,9 @@
     <div id = "map" style = "width: 100vw; height: 100vh; z-index: 1; position: absolute; top: 0; left: 0;"></div>
     <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
+    <!-- Scripts used by search box-->
+    <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+    <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
     <script>
         // vars
         var selectPin = L.marker([0,0], opacity = 0);
@@ -151,6 +156,21 @@
                 }
             }
         }
+        //Creates search bar object
+        var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+        //Creates layer to display search results
+        var results = new L.LayerGroup().addTo(map);
+        //Activates search
+        searchControl.on('results', function(data){
+        results.clearLayers();
+        for (var i = data.results.length - 1; i >= 0; i--) {
+                results.addLayer(L.marker(data.results[i].latlng));
+            }
+        });
+        //Centers map to start
+        function centerMap() {
+            map.panTo([38.6253112804894, -90.18671821476585]);
+        }
     </script>
 
     <!--Logo: centered to the top of the page, uses fluid container to dynamically resize in accordance to the window size-->
@@ -164,6 +184,11 @@
     <div class="button-position">
         <div>
             <!--INFO PAGE-->
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                    aria-controls="offcanvasExample"> Info
+            </button>
+
+            <!--HOME BUTTON-->
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample"> Info
             </button>
