@@ -54,7 +54,7 @@
 </script>
 <div id="container">
     <!-- Toast -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 3;">
+    <div class="position-fixed end-0 p-3" style="z-index: 3;">
         <div class="toast hide text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <strong class="me-auto">Success!</strong>
@@ -169,14 +169,17 @@
         for (i = 0; i < idarr.length; i++) {
             if (approvedarr[i] == 1) {
                 currentMarker = L.marker([latarr[i], lngarr[i]], riseOnHover=true).addTo(map);
-                popupContents = '<hr/><div class="text-center mb-2"><p class="mb-0" style="font-size: 1.25em;">' + textarr[i] + '</p></div>';
                 if (imagearr[i]) {
+                    popupContents = '<hr/><div class="text-center mb-2"><p class="mb-0" style="font-size: 1.25em;">' + textarr[i] + '</p></div>';
                     popupImage = '<hr/><img src="' + imagearr[i] + '" height="150px"/>';
                     popupAlt = '<div class="text-center mb-4"><small><i>' + "Description: " + altarr[i] + '</i></small></div>';
                     popupContents = popupImage.concat(popupContents);
                     popupContents = popupContents.concat(popupAlt);
                     currentMarker.bindPopup(popupContents, {maxWidth : "auto"});
+                    currentMarker.openPopup();
+                    currentMarker.closePopup();
                 } else {
+                    popupContents = '<hr/><div class="text-center mb-2"><p class="mb-4" style="font-size: 1.25em;">' + textarr[i] + '</p></div>';
                     currentMarker.bindPopup(popupContents, {minWidth : 300});
                 }
             }

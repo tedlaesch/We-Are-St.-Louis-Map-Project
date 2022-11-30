@@ -189,3 +189,52 @@ p {
   height: auto;
 }
 
+/******************** .textAdded custom css **********************/
+.textAdded{
+  width:100%;
+  text-align: right;
+  margin-top:10px;
+  color: #737373;
+}
+
+/******************** .imageTextAdded custom css **********************/
+.imageTextAdded{
+  width:100%;
+  text-align: right;
+  margin-top:10px;
+  color: #737373;
+}
+
+
+/******************** .image-preview custom css **********************/
+.image-preview{
+  width: 100%;
+  min-height: 50px;
+  border: 2px solid #dddddd;
+  /* margin-top: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #cccccc;
+}
+
+/******************** .image-preview__image custom css **********************/
+.image-preview__image{
+  display: none;
+  width: 100%;
+}
+
+/******************** .imageTextAdded custom css **********************/
+.imageDescription{
+  display: none;
+}
+
+/******************** .delete custom css **********************/
+.deletePic {
+  width: 100%;
+  text-align: center;
+  margin-top: 1px;
+  font-size: 1px;
+}
+
