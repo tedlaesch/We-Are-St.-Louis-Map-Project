@@ -131,13 +131,13 @@
                         var xhr = new XMLHttpRequest(); //Opens AJAX to pass id to approve.php
                         xhr.open("GET", "approve.php?id=" + elementid, true); //sends id of post to approve.php
                         xhr.send(null);
-                        setTimeout(() => {  window.location.reload(); }, 100);
+                        setTimeout(() => {  window.location.reload(); }, 200);
                     }
                     function buttonDeny(elementid) {
                         var xhr = new XMLHttpRequest(); //Opens AJAX to pass id to delete.php
                         xhr.open("GET", "delete.php?id=" + elementid, true); //sends id of post to delete.php
                         xhr.send(null);
-                        setTimeout(() => {  window.location.reload(); }, 100);
+                        setTimeout(() => {  window.location.reload(); }, 200);
                     }
                 </script>
                 <!-- Admin page end -->
