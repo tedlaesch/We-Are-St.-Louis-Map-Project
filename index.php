@@ -276,7 +276,7 @@
                           enctype = "multipart/form-data">
                         <!--Text label + textbox-->
                         <div class="form-group">
-                            <label class="form-label mt-1" for="userText">Text:</label>
+                            <label class="form-label mt-1" for="userText">Story:</label>
                             <textarea class="form-control" id="userText" name="userText" rows="4" required
                                       placeholder="Enter Your Story Here ...."></textarea>
                             <!-- <span class ="error_form" id = "text_error_message"> </span> -->
