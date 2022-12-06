@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Admin Page</title>
+
         <!-- Tab Icon-->
         <link rel="icon" type="image/x-icon" href="assets/tabicon.png" />
         <!-- Bootstrap CSS -->
