@@ -37,13 +37,13 @@ function clean_input($data){
 // uploads folder contains the images uploaded by users
 
 // If submit button is clicked
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']) && $_FILES['userImage']['name'] != ''){
     // get information of the file.
     $file = $_FILES['userImage'];
     // get the name of the file
     $fileName = $_FILES['userImage']['name'];
     // get the temporary location of the file
-    $fileTempLocation = $_FILES['userImage']['temp_location'];
+    $fileTempLocation = $_FILES['userImage']['tmp_name'];
     // get the size of the file
     $fileSize = $_FILES['userImage']['size'];
     // check for error
@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
                 // Upload the file in fileDestination
                 $fileDestination = 'uploads/'.$fileNameChanged;
                 move_uploaded_file($fileTempLocation, $fileDestination);
-                header("Location: insert.php? Success!");
+                //header("Location: insert.php? Success!");
             }
             else{
                 echo "Your file is too big!";
@@ -87,23 +87,31 @@ if(isset($_POST['submit'])){
     // File extensions are not allowed
     else{
         echo "This file extension is not allowed!";
+        echo '"' . $fileName . '"';
     }
 }
 
 
 
 /**************************************** SQL CONNECTION ***********************************/
-$conn = new mysqli("localhost", "root", "", "information"); //Establish connection to database "information"
-$posttext = $_POST["userText"]; //Get "usertext from form"
-$insert = "INSERT INTO information (posttext) VALUES ('$posttext')"; //variable that inserts what we want
+$conn = new mysqli("localhost", "root", "", "map"); //Establish connection to database "map"
+$posttext = isset($_POST["userText"]) ? $_POST["userText"] : ""; //Get "usertext from form"
+$postlocationlat = isset($_POST['coordlat']) ? $_POST['coordlat'] : 0.0;
+$postlocationlng = isset($_POST["coordlng"]) ? $_POST["coordlng"] : 0.0;
+$postalttext = isset($_POST["altText"]) ? $_POST["altText"] : "";
+$postImage = isset($fileDestination) ? $fileDestination : "";
+$approved = 0;
+// Push everything into a new row in the table
+$insert = "INSERT INTO posts (text, image, alt, lat, lng, approved) VALUES (?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($insert);
+$stmt->bind_param("ssssss", $posttext, $postImage, $postalttext, $postlocationlat, $postlocationlng, $approved);
+$stmt->execute();
 
-if ($conn->query($insert) === TRUE) { //inserts into table
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
+$stmt->close();
 $conn->close(); //closes connection
-?>
 
-<h1>DATA WAS INSERTED</h1>
+//echo "Lat: " . $postlocationlat . "\n";
+//echo "Lng: " . $postlocationlng;
+
+header("Location: map.php?0");
+?>
