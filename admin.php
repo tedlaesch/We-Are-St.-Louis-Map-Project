@@ -125,7 +125,7 @@
                         }
                     })
                     function buttonBack() {
-                        window.location.href = "index.php";
+                        window.location.href = "map.php";
                     }
                     function buttonLogOut() {
                         window.location.replace("logout.php");
