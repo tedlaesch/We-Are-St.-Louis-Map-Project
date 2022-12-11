@@ -71,7 +71,13 @@
     <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
     <script>
         // vars
-        var selectPin = L.marker([0,0], opacity = 0);
+        var myIcon = L.icon({
+            iconUrl: 'assets/location.png',
+            iconSize: [38, 38],
+            iconAnchor: [22, 38],
+            popupAnchor: [-3, -76]
+        });
+        var selectPin = L.marker([0,0], {icon: myIcon});
 
         // Creating map options - coordinates are the Gateway Arch
         var mapOptions = {
